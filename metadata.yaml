@@ -1,0 +1,8 @@
+service:
+  full_name: Amazon Athena
+  short_name: Athena
+  link: https://aws.amazon.com/athena/
+  documentation: https://docs.aws.amazon.com/athena/
+api_versions:
+  - api_version: v1alpha1
+    status: available

@@ -1,0 +1,10 @@
+ignore:
+  resource_names:
+      - CapacityReservation
+      - DataCatalog
+      - NamedQuery
+      - Notebook
+      - PreparedStatement
+      - PresignedNotebookUrl
+      - WorkGroup
+model_name: athena
