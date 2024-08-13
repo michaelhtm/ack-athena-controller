@@ -13,7 +13,9 @@ description: |-
   **About Amazon Athena**
 
 
-  {ADD YOUR DESCRIPTION HERE}
+  Amazon Athena is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3)
+  using standard SQL. With a few actions in the AWS Management Console, you can point Athena at your data stored in Amazon S3 and 
+  begin using standard SQL to run ad-hoc queries and get results in seconds.
 
 
   **About the AWS Controllers for Kubernetes**
@@ -28,13 +30,11 @@ description: |-
 
   Please follow the following link: [Red Hat OpenShift](https://aws-controllers-k8s.github.io/community/docs/user-docs/openshift/)
 samples:
-- kind: ExampleCustomKind
-  spec: '{}'
-- kind: SecondExampleCustomKind
+- kind: WorkGroup
   spec: '{}'
 maintainers:
 - name: "athena maintainer team"
   email: "ack-maintainers@amazon.com"
 links:
 - name: Amazon Athena Developer Resources
-  url: https://aws.amazon.com/Athena/developer-resources/
+  url: https://aws.amazon.com/athena/resources/
