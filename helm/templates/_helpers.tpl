@@ -70,6 +70,26 @@ rules:
   - list
   - watch
 - apiGroups:
+  - athena.services.k8s.aws
+  resources:
+  - workgroups
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - athena.services.k8s.aws
+  resources:
+  - workgroups/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
   - services.k8s.aws
   resources:
   - adoptedresources
