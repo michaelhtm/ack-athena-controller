@@ -72,6 +72,7 @@ rules:
 - apiGroups:
   - athena.services.k8s.aws
   resources:
+  - preparedstatements
   - workgroups
   verbs:
   - create
@@ -84,6 +85,7 @@ rules:
 - apiGroups:
   - athena.services.k8s.aws
   resources:
+  - preparedstatements/status
   - workgroups/status
   verbs:
   - get

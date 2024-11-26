@@ -1,0 +1,9 @@
+apiVersion: athena.services.k8s.aws/v1alpha1
+kind: PreparedStatement
+metadata:
+  name: $PREPARED_STATEMENT_NAME
+spec:
+  name: $PREPARED_STATEMENT_NAME
+  description: initial description
+  queryStatement: "SELECT * FROM my_table WHERE column = ?"
+  workGroup: $WORK_GROUP_NAME

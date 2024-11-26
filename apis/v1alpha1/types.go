@@ -51,10 +51,21 @@ type AthenaError struct {
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 }
 
+// Contains statistics for a notebook calculation.
+type CalculationStatistics struct {
+	Progress *string `json:"progress,omitempty"`
+}
+
 // Contains information about the status of a notebook calculation.
 type CalculationStatus struct {
 	CompletionDateTime *metav1.Time `json:"completionDateTime,omitempty"`
+	StateChangeReason  *string      `json:"stateChangeReason,omitempty"`
 	SubmissionDateTime *metav1.Time `json:"submissionDateTime,omitempty"`
+}
+
+// Summary information for a notebook calculation.
+type CalculationSummary struct {
+	Description *string `json:"description,omitempty"`
 }
 
 // Contains the submission time of a single allocation request for a capacity
@@ -85,9 +96,18 @@ type CustomerContentEncryptionConfiguration struct {
 	KMSKey *string `json:"kmsKey,omitempty"`
 }
 
+// Contains information about a data catalog in an Amazon Web Services account.
+//
+// In the Athena console, data catalogs are listed as "data sources" on the
+// Data sources page under the Data source name column.
+type DataCatalog struct {
+	Description *string `json:"description,omitempty"`
+}
+
 // Contains metadata information for a database in a data catalog.
 type Database struct {
-	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Name        *string `json:"name,omitempty"`
 }
 
 // If query and calculation results are encrypted in Amazon S3, indicates the
@@ -112,8 +132,10 @@ type IdentityCenterConfiguration struct {
 
 // A query, where QueryString contains the SQL statements that make up the query.
 type NamedQuery struct {
-	Name      *string `json:"name,omitempty"`
-	WorkGroup *string `json:"workGroup,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Name        *string `json:"name,omitempty"`
+	QueryString *string `json:"queryString,omitempty"`
+	WorkGroup   *string `json:"workGroup,omitempty"`
 }
 
 // Contains metadata for notebook, including the notebook name, ID, workgroup,
@@ -129,15 +151,19 @@ type NotebookSessionSummary struct {
 	CreationTime *metav1.Time `json:"creationTime,omitempty"`
 }
 
-// A prepared SQL statement for use with Athena.
-type PreparedStatement struct {
-	LastModifiedTime *metav1.Time `json:"lastModifiedTime,omitempty"`
-	WorkGroupName    *string      `json:"workGroupName,omitempty"`
-}
-
 // The name and last modified time of the prepared statement.
 type PreparedStatementSummary struct {
 	LastModifiedTime *metav1.Time `json:"lastModifiedTime,omitempty"`
+	StatementName    *string      `json:"statementName,omitempty"`
+}
+
+// A prepared SQL statement for use with Athena.
+type PreparedStatement_SDK struct {
+	Description      *string      `json:"description,omitempty"`
+	LastModifiedTime *metav1.Time `json:"lastModifiedTime,omitempty"`
+	QueryStatement   *string      `json:"queryStatement,omitempty"`
+	StatementName    *string      `json:"statementName,omitempty"`
+	WorkGroupName    *string      `json:"workGroupName,omitempty"`
 }
 
 // Information about a single instance of a query execution.
@@ -145,6 +171,7 @@ type QueryExecution struct {
 	// The Athena engine version for running queries, or the PySpark engine version
 	// for running sessions.
 	EngineVersion *EngineVersion `json:"engineVersion,omitempty"`
+	Query         *string        `json:"query,omitempty"`
 	// Specifies whether Amazon S3 access grants are enabled for query results.
 	QueryResultsS3AccessGrantsConfiguration *QueryResultsS3AccessGrantsConfiguration `json:"queryResultsS3AccessGrantsConfiguration,omitempty"`
 	// The location in Amazon S3 where query and calculation results are stored
@@ -243,10 +270,12 @@ type SessionStatus struct {
 	IdleSinceDateTime    *metav1.Time `json:"idleSinceDateTime,omitempty"`
 	LastModifiedDateTime *metav1.Time `json:"lastModifiedDateTime,omitempty"`
 	StartDateTime        *metav1.Time `json:"startDateTime,omitempty"`
+	StateChangeReason    *string      `json:"stateChangeReason,omitempty"`
 }
 
 // Contains summary information about a session.
 type SessionSummary struct {
+	Description *string `json:"description,omitempty"`
 	// The Athena engine version for running queries, or the PySpark engine version
 	// for running sessions.
 	EngineVersion   *EngineVersion `json:"engineVersion,omitempty"`
@@ -272,6 +301,11 @@ type TableMetadata struct {
 type Tag struct {
 	Key   *string `json:"key,omitempty"`
 	Value *string `json:"value,omitempty"`
+}
+
+// The name of a prepared statement that could not be returned.
+type UnprocessedPreparedStatementName struct {
+	StatementName *string `json:"statementName,omitempty"`
 }
 
 // The configuration of the workgroup, which includes the location in Amazon

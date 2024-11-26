@@ -39,6 +39,7 @@ import (
 	svcresource "github.com/aws-controllers-k8s/athena-controller/pkg/resource"
 	svcsdk "github.com/aws/aws-sdk-go/service/athena"
 
+	_ "github.com/aws-controllers-k8s/athena-controller/pkg/resource/prepared_statement"
 	_ "github.com/aws-controllers-k8s/athena-controller/pkg/resource/work_group"
 
 	"github.com/aws-controllers-k8s/athena-controller/pkg/version"

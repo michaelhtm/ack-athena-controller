@@ -9,6 +9,7 @@ rules:
 - apiGroups:
   - athena.services.k8s.aws
   resources:
+  - preparedstatements
   - workgroups
   verbs:
   - get
