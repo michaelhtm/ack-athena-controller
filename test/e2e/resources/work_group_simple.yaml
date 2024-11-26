@@ -1,0 +1,12 @@
+apiVersion: athena.services.k8s.aws/v1alpha1
+kind: WorkGroup
+metadata:
+  name: $WORK_GROUP_NAME
+spec:
+  name: $WORK_GROUP_NAME
+  description: initial description
+  tags:
+    - key: k1
+      value: v1
+    - key: k2
+      value: v2

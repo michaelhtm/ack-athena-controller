@@ -1,10 +1,36 @@
 ignore:
   resource_names:
-      - CapacityReservation
-      - DataCatalog
-      - NamedQuery
-      - Notebook
-      - PreparedStatement
-      - PresignedNotebookUrl
-      - WorkGroup
+    - CapacityReservation
+    - DataCatalog
+    - NamedQuery
+    - Notebook
+    - PreparedStatement
+    - PresignedNotebookUrl
+    # - WorkGroup
 model_name: athena
+resources:
+  WorkGroup:
+    fields:
+      Name:
+        is_primary_key: true
+        is_immutable: true
+    renames:
+      operations:
+        GetWorkGroup:
+          input_fields:
+            WorkGroup: Name
+        UpdateWorkGroup:
+          input_fields:
+            WorkGroup: Name
+        DeleteWorkGroup:
+          input_fields:
+            WorkGroup: Name
+    exceptions:
+      errors:
+        404:
+          code: InvalidRequestException
+    hooks:
+      sdk_read_one_post_set_output:
+        template_path: hooks/work_group/sdk_read_one_post_set_output.go.tpl
+      sdk_update_pre_build_request:
+        template_path: hooks/work_group/sdk_update_pre_build_request.go.tpl
